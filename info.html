@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#669;background-color:#e8edff;}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#039;background-color:#b9c9fe;}
+
+    </style>
+
+</head>
+<body>
+<form  method="post">
+    <input type="submit" value="Cancel" name="cancel" />
+</form>
+<table class="tg" align="center">
+
+    <tr>
+        <th colspan="6">Generating sub anagram of : {{inputword}}</th>
+    </tr>
+    <tr>
+        <th class="tg-0lax">Anagram length</th>
+        <th class="tg-0lax">Input Anagrams Words</th>
+
+    </tr>
+    <tbody>
+
+    {% for key, value in dictionary_words.iteritems() %}
+
+    <tr>
+        <td>{{key}} words</td>
+
+        <td>
+            {% for input_word in value %}
+                {{input_word}}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+</body>
+</html>

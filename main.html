@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>anagram</title>
+
+    <style type="text/css">
+        .tg  {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;}
+        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal}
+        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal}
+        .tg .tg-c3ow{border-color:inherit;text-align:left;vertical-align:top}
+
+    </style>
+
+</head>
+<body>
+
+
+{% if user %}
+<h1 style="color: #4485b8; text-align: center;">ANAGRAMS&nbsp;&nbsp;
+    <button  style="height:30px; width:90px"  onclick="location.href='{{ url }}'" type="button">
+        LOGOUT
+    </button>
+</h1>
+
+<p style="text-align: center;"><strong style="color: #000;">Login User Email id: </strong>  &nbsp;&nbsp;&nbsp;
+    <button  style="height:30px; width:100px"  onclick="location.href='/newdevice'" type="button">
+        Add Word
+    </button>
+
+
+<form method="Get" style="text-align: left;">
+    <input name="input_word" type="text" value="" pattern="[a-zA-Z]*" align="center" title="Alphabet characters only">
+    <input type="submit" value="Search Word" name="search_button" />
+    <br />
+    <br />
+</form>
+
+<form method="Get" style="text-align: left;" action="/deviceinfo">
+    <input name="input_word" type="text" value="" pattern="[a-zA-Z]*" align="center" title="Alphabet characters only">
+    <input type="submit" value="  Generate  " name="search_button" />
+    <br />
+    <br />
+</form>
+<h3 align="center"> Unique Anagrams - {{unique_anagrams}} , Total Counts - {{total_count}}</h3>``
+<table class="tg" align="left">
+
+    <tr>
+        <th colspan="6">Results of </th>
+    </tr>
+    <tr>
+        <th>Word Key </th>
+        <th>Input Anagrams Words</th>
+        <th>Total Counts</th>
+        <th>Anagram length</th>
+    </tr>
+    <tbody>
+    {% for anagram in anagram_model %}
+
+    <tr>
+        <td>{{anagram.anagram_key}}</td>
+
+        <td>
+            {% for input_word in anagram.input_words %}
+                {{input_word}}
+            {% endfor %}
+        </td>
+
+        <td align="center">{{ anagram.input_words_count }}</td>
+        <td align="center">{{ anagram.word_length }}</td>
+    </tr>
+    {% endfor %}
+
+
+    </tbody>
+</table>
+
+</p>
+
+{% else %}
+
+<h1 style="color: #4485b8; text-align: center;">GPU of Anagram Engine
+    <button  style="height:40px; width:80px"  onclick="location.href='{{ url }}'" type="button">
+        LOGIN
+    </button>
+</h1>
+<p style="text-align: center;"><strong style="color: #000;">You must login </strong></p>
+
+{% endif %}
+
+
+
+</body>
+</html>
